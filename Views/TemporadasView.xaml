@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="GuiaDeEpisodios.Views.TemporadasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GuiaDeEpisodios.Views" xmlns:viewmodels="clr-namespace:GuiaDeEpisodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaEpViewModel}"
+             mc:Ignorable="d" Name="uc1"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        
+        <ContextMenu x:Key ="hola">
+            <MenuItem Header="Agregar Temporada" Command="{Binding VerAgregarTemporadaCommand}"></MenuItem>
+            <MenuItem Header="Agregar Episodio" Command="{Binding VerAgregarEpisodioCommand}"></MenuItem>
+        </ContextMenu>
+        
+        <ContextMenu x:Key="hola2">
+            <MenuItem Header="Ver temporada" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEpisodiosCommand}"></MenuItem>
+            <MenuItem Header="Editar" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEditarTemporadaCommand}"></MenuItem>
+            <MenuItem Header="Eliminar" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEliminarCommand}"></MenuItem>
+        </ContextMenu>
+    </UserControl.Resources>
+
+    <DockPanel  Background="#4A4E69">
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3" ContextMenu="{StaticResource hola}">Agregar +</Button>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center">
+
+            <ListBox ItemsSource="{Binding Temporadas}" SelectedItem="{Binding temporada}" Background="#9A8C98">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <!--<UniformGrid Rows="2" Columns="4"></UniformGrid>-->
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:TemporadaView ContextMenu="{StaticResource hola2}"></local:TemporadaView>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>

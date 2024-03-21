@@ -1,0 +1,78 @@
+﻿<Window x:Class="GuiaDeEpisodios.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GuiaDeEpisodios" xmlns:viewmodels="clr-namespace:GuiaDeEpisodios.ViewModels" xmlns:views="clr-namespace:GuiaDeEpisodios.Views" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="#22223B" Icon="ico.png">
+    <Window.DataContext>
+        <viewmodels:GuiaEpViewModel></viewmodels:GuiaEpViewModel>
+    </Window.DataContext>
+
+    <ContentControl>
+        <ContentControl.Style>
+            <Style TargetType="ContentControl">
+                <Style.Triggers>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Temporadas}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:TemporadasView></views:TemporadasView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.AgregarEpisodio}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:InfoEpisodioView></views:InfoEpisodioView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.AgregarTemporada}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:InfoTemporadaView></views:InfoTemporadaView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.EditarEpisodio}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:InfoEpisodioView></views:InfoEpisodioView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.EditarTemporada}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:InfoTemporadaView></views:InfoTemporadaView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Eliminar}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:EliminarView></views:EliminarView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+
+                    <DataTrigger Binding="{Binding Ventana}" Value="{x:Static viewmodels:Ventanas.Episodios}">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <views:EpisodiosView></views:EpisodiosView>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
+</Window>
