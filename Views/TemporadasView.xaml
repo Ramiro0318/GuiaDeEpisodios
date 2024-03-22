@@ -7,12 +7,12 @@
              mc:Ignorable="d" Name="uc1"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        
+
         <ContextMenu x:Key ="hola">
             <MenuItem Header="Agregar Temporada" Command="{Binding VerAgregarTemporadaCommand}"></MenuItem>
             <MenuItem Header="Agregar Episodio" Command="{Binding VerAgregarEpisodioCommand}"></MenuItem>
         </ContextMenu>
-        
+
         <ContextMenu x:Key="hola2">
             <MenuItem Header="Ver temporada" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEpisodiosCommand}"></MenuItem>
             <MenuItem Header="Editar" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEditarTemporadaCommand}"></MenuItem>
@@ -20,25 +20,70 @@
         </ContextMenu>
     </UserControl.Resources>
 
-    <DockPanel  Background="#4A4E69">
-        <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3" ContextMenu="{StaticResource hola}">Agregar +</Button>
+    <DockPanel >
+        <DockPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0C464E" Offset="0.507"/>
+                <GradientStop Color="#FF02515C" Offset="1"/>
+            </LinearGradientBrush>
+        </DockPanel.Background>
 
+
+        <Border DockPanel.Dock="Top" BorderThickness="2" BorderBrush="Black">
+
+            <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3" ContextMenu="{StaticResource hola}">Agregar +</Button>
+
+        </Border>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center">
+            <ScrollViewer.Background>
+                <ImageBrush Stretch="Fill" AlignmentX="Left" AlignmentY="Top" ImageSource="https://www.eluniverso.com/resizer/b1BVmUwVF0vGYBiFluTUKjs14ME=/1117x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IYCYVPHX7NHCXN6XNZCDPJT4LA.jpg" >
+                    
+                </ImageBrush>
+            </ScrollViewer.Background>
 
-            <ListBox ItemsSource="{Binding Temporadas}" SelectedItem="{Binding temporada}" Background="#9A8C98">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <!--<UniformGrid Rows="2" Columns="4"></UniformGrid>-->
-                        <WrapPanel></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <local:TemporadaView ContextMenu="{StaticResource hola2}"></local:TemporadaView>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <DockPanel >
+                <DockPanel DockPanel.Dock="Top" Height="220">
 
-            </ListBox>
+                    <Image Source="https://es.web.img3.acsta.net/c_310_420/pictures/19/11/22/09/33/5060052.jpg" Margin="20,15,10,10" HorizontalAlignment="Left" ></Image>
+
+                    <StackPanel HorizontalAlignment="Stretch" >
+
+                        <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#A5000000">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="12,2,5,0"></Setter>
+                                    <Setter Property="Foreground" Value="Gray"></Setter>
+                                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock x:Name="TheWitcher" FontSize="45" FontWeight="Bold" Margin="0" FontFamily="Thewitcher.ttf #TheWitcher"> The Witcher</TextBlock>
+                            <TextBlock> Desde 2019 | 60 min. |  <Run FontWeight="Bold"> Aventura, Fantasía</Run></TextBlock>
+                            <TextBlock> Creada por              <Run FontWeight="Bold"> Lauren Schmidt Hissrich</Run></TextBlock>
+                            <TextBlock> Reparto                 <Run FontWeight="Bold"> Henry Cavill, Anya Chalotra, Freya Allan</Run></TextBlock>
+                            <TextBlock> Nacionalidades          <Run FontWeight="Bold"> EE.UU., Polonia </Run></TextBlock>
+                        </StackPanel>
+                        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap" TextTrimming="WordEllipsis" > The Witcher es la adaptación televisiva de la saga literaria creada por Andrzej Sapkowski. La trama se desarrolla en un mundo oscuro y adulto en el que habitan criaturas fantásticas propias de la mitología europea del este.</TextBlock>
+                    </StackPanel>
+                    <WrapPanel>
+                    </WrapPanel>
+
+                </DockPanel>
+
+
+                <ListBox ClipToBounds="True" ItemsSource="{Binding Temporadas}" SelectedItem="{Binding temporada}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:TemporadaView ContextMenu="{StaticResource hola2}"></local:TemporadaView>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </DockPanel>
         </ScrollViewer>
 
     </DockPanel>

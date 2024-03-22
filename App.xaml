@@ -4,17 +4,19 @@
              xmlns:local="clr-namespace:GuiaDeEpisodios"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
         <Style TargetType="GroupBox">
-            <Setter Property="Background" Value="#F2E9E4"/>
-            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="Background" Value="#1D7F8D"/>
             <Setter Property="Foreground" Value="#22223B"/>
             <Setter Property="Margin" Value="5,7,5,0"/>
+            <Setter Property="FontSize" Value ="25"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="3"/>
-            <Setter Property="Width" Value="100"/>
+            <Setter Property="Width" Value="125"/>
             <Setter Property="Foreground" Value="#22223B"/>
         </Style>
         <Style TargetType="TextBox">
@@ -23,7 +25,7 @@
             <Setter Property="Margin" Value="4"/>
         </Style>
         <Style TargetType="Button">
-            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background" Value="#F2E9E4"/>
@@ -36,8 +38,15 @@
         <Style TargetType="ListBox">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#BF136872" Offset="0"/>
+                        <GradientStop Color="#D80C464E" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
         </Style>
-
-
     </Application.Resources>
 </Application>

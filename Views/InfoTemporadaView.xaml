@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <StackPanel Background="#C9ADA7">
-        <GroupBox Margin="5,7,5,0" Header="Datos de la temporada" FontSize="19" Background="#F2E9E4" Foreground="#22223B">
+    <StackPanel Background="#02515C">
+        <GroupBox Header="Datos de la temporada" >
             <StackPanel>
 
                 <StackPanel>
@@ -20,7 +20,8 @@
                 
                 <DockPanel>
                     <Label>Imagen</Label>
-                    <TextBox Text="{Binding temporada.Imagen}"></TextBox>
+                    <TextBox x:Name="Imagencita" Text="{Binding temporada.Imagen}"></TextBox>
+                    
                 </DockPanel>
 
                 <StackPanel>
@@ -58,5 +59,6 @@
 
             </StackPanel>
         </GroupBox>
+
     </StackPanel>
 </UserControl>

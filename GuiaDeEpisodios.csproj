@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\Thewitcher-jnOj.ttf" />
+    <None Remove="fonts\Thewitcher.ttf" />
     <None Remove="ico.png" />
   </ItemGroup>
 
@@ -21,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="fonts\Thewitcher.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="ico.png" />
   </ItemGroup>
 

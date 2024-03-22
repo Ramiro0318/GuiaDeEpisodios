@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:GuiaDeEpisodios.Views" xmlns:viewmodels="clr-namespace:GuiaDeEpisodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaEpViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <TextBlock Text="{Binding Nombre}" TextWrapping="Wrap" FontSize="30"></TextBlock>
+    <StackPanel Margin="10,0,10,0" Background="#02FFFFFF">
+        <TextBlock Text="{Binding Nombre}" TextWrapping="Wrap" FontWeight="Black" FontSize="30"></TextBlock>
         <Image Source="{Binding Imagen}" Margin="12" Height="180" Width="120"></Image>
     </StackPanel>
 </UserControl>

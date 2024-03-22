@@ -13,16 +13,35 @@
         </ContextMenu>
     </UserControl.Resources>
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top" Background="#4A4E69">
-            <TextBlock Text="{Binding temporada.Nombre}"  FontSize="30" DockPanel.Dock="Left" Width="400"></TextBlock>
-            <Button Command="{Binding CancelarCommand}" HorizontalAlignment="Right" Width="120">Regresar</Button>
+        <DockPanel DockPanel.Dock="Top">
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0C464E" Offset="0.507"/>
+                    <GradientStop Color="#FF02515C" Offset="1"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+
+            <Border DockPanel.Dock="Top" BorderThickness="2" BorderBrush="Black">
+                <DockPanel>
+                    <TextBlock Text="{Binding temporada.Nombre}" FontSize="30" DockPanel.Dock="Left" Width="400" Margin="5" FontWeight="Bold"></TextBlock>
+                    <Button Command="{Binding CancelarCommand}" HorizontalAlignment="Right" Width="120">Regresar</Button>
+                </DockPanel>
+            </Border>
+
         </DockPanel>
         <ScrollViewer VerticalScrollBarVisibility="Visible">
 
-            <ListBox ItemsSource="{Binding Episodios}" SelectedItem="{Binding episodio}" Background="#9A8C98">
+            <ListBox ItemsSource="{Binding Episodios}" SelectedItem="{Binding episodio}">
+                <ListBox.Background>
+                    <SolidColorBrush Color="#FF136872"></SolidColorBrush>
+                    <!--<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF136872"/>
+                        <GradientStop Color="#FF0C464E" Offset="1"/>
+                    </LinearGradientBrush>-->
+                </ListBox.Background>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
+                        <UniformGrid Columns="3"></UniformGrid>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
@@ -31,7 +50,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            
+
         </ScrollViewer>
     </DockPanel>
 </UserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="#C9ADA7">
+    <Grid Background="#02515C">
         <StackPanel>
             <GroupBox Header="Datos del capitulo">
                 <StackPanel>
