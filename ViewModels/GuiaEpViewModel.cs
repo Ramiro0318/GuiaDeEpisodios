@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Text.Json;
 using System.Windows.Controls;
@@ -106,6 +107,8 @@ namespace GuiaDeEpisodios.ViewModels
 
         private void VerEditarTemporada()
         {
+            Error = "";
+
             var clonTemporada = new Temporada()
             {
                 Nombre = temporada.Nombre,
@@ -124,6 +127,7 @@ namespace GuiaDeEpisodios.ViewModels
 
         private void VerEditarCapitulo()
         {
+            Error = "";
             var clonEpisodio = new Episodio()
             {
                 Nombre = episodio.Nombre,
@@ -134,24 +138,22 @@ namespace GuiaDeEpisodios.ViewModels
             };
 
             indexEpisodioAnterior = Episodios.IndexOf(episodio);
+            Episodios.Clear();
+            Temporadas.Clear();
+            Cargar();
+
             episodio = clonEpisodio;
 
             Ventana = Ventanas.EditarEpisodio;
             Actualizar(nameof(Ventana));
-
         }
         private void EditarTemporada()
         {
             Error = "";
             if (temporada != null)
             {
-                var duplicado = (from x in Temporadas where x.Nombre == temporada.Nombre select x).Any();
-                if (duplicado == true)
-                {
-                    Error = "El nombre de la temporada no puede estar duplicado";
-                    Actualizar(nameof(Error));
-                    return;
-                }
+                
+                
                 if (string.IsNullOrWhiteSpace(temporada.Nombre))
                 {
                     Error = "Escriba el nombre de la temporada";
@@ -191,17 +193,26 @@ namespace GuiaDeEpisodios.ViewModels
                 }
 
                 Temporadas[indexTemporadaAnterior] = temporada;
+                var duplicado = (from x in Temporadas where x.Nombre == temporada.Nombre select x).Count();
+                if (duplicado > 1)
+                {
+                    Error = "El nombre de la temporada no puede estar duplicado";
+                    Actualizar(nameof(Error));
+                    return;
+                }
                 Guardar();
                 Ventana = Ventanas.Temporadas;
                 Actualizar(nameof(Ventana));
+              
             }
         }
 
         private void EditarEpisodio()
         {
             Error = "";
+            
             if (episodio != null)
-            {
+            {  
                 if (string.IsNullOrWhiteSpace(episodio.Nombre))
                 {
                     Error = "Escriba el nombre del capitulo";
@@ -231,12 +242,16 @@ namespace GuiaDeEpisodios.ViewModels
                 {
                     Actualizar(nameof(Error));
                     return;
-                }
+                } 
 
+                var remover = (from x in Episodios where x.Nombre == episodio.Nombre select x ).First();
+                Episodios.Remove(remover);
 
                 Episodios[indexEpisodioAnterior] = episodio;
                 episodio.Temporada = Temporadas[episodio.Index].Nombre;
-                episodio.Temporada.ToString();
+               
+
+                //Guardar();
                 Guardar();
                 Ventana = Ventanas.Temporadas;
                 Actualizar(nameof(Ventana));
@@ -274,6 +289,7 @@ namespace GuiaDeEpisodios.ViewModels
             if (episodio != null)
             {
                 Episodios.Remove(episodio);
+                Guardar();
                 Ventana = Ventanas.Temporadas;
                 Actualizar(nameof(Ventana));
             }
@@ -289,6 +305,7 @@ namespace GuiaDeEpisodios.ViewModels
         private void AgregarTemporada()
         {
             Error = "";
+            bool isDuplicado = (from x in Temporadas where x.Nombre == temporada.Nombre select x).Any();
             if (temporada != null)
             {
                 if (string.IsNullOrWhiteSpace(temporada.Nombre))
@@ -305,6 +322,12 @@ namespace GuiaDeEpisodios.ViewModels
                     Actualizar(nameof(Error));
                     return;
                 }
+                if (isDuplicado)
+                {
+                    Error = "Una temporada con este nombre ya eiste";
+                    Actualizar(nameof(Error));
+                    return;
+                }
                 //if (string.IsNullOrWhiteSpace(temporada.Siposis))
                 //{
                 //    Error = "Escriba el nombre de la temporada";
@@ -316,7 +339,6 @@ namespace GuiaDeEpisodios.ViewModels
                     Actualizar(nameof(Error));
                     return;
                 }
-
 
                 Temporadas.Add(temporada);
                 Guardar();
@@ -333,7 +355,7 @@ namespace GuiaDeEpisodios.ViewModels
             Actualizar(nameof(Ventana));
         }
 
-        private void AgregarEpisodio()
+        private void AgregarEpisodio() ///////////////////
         {
             Error = "";
             if (episodio != null)
@@ -445,4 +467,5 @@ namespace GuiaDeEpisodios.ViewModels
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 
+    //Ramiro Valverde
 }

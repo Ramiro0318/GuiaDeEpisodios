@@ -31,7 +31,7 @@
                     </DockPanel>
                 </StackPanel>
 
-                <TextBlock Text="{Binding Error}" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" Foreground="Red" FontSize="20"></TextBlock>
+                <TextBlock Text="{Binding Error}" TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" Foreground="Red" FontSize="20"></TextBlock>
 
                 <WrapPanel HorizontalAlignment="Center">
 

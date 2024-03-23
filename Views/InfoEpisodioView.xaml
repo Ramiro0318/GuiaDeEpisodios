@@ -17,6 +17,7 @@
                         <Label>Nombre</Label>
                         <TextBox Text="{Binding episodio.Nombre}"></TextBox>
                     </DockPanel>
+
                     <DockPanel>
                         <Label>Imagen</Label>
                         <TextBox Text="{Binding episodio.ImagenEp}"></TextBox>
@@ -36,7 +37,7 @@
                     </DockPanel>
 
 
-                    <TextBlock Text="{Binding Error}" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" Foreground="Red"></TextBlock>
+                    <TextBlock Text="{Binding Error}" TextWrapping="Wrap" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,0" Foreground="Red"></TextBlock>
 
                     <WrapPanel HorizontalAlignment="Center">
 

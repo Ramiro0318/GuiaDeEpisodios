@@ -20,7 +20,7 @@
             <Setter Property="Foreground" Value="#22223B"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="4"/>
         </Style>
@@ -31,7 +31,7 @@
             <Setter Property="Background" Value="#F2E9E4"/>
         </Style>
         <Style TargetType="ComboBox">
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="4"/>
         </Style>

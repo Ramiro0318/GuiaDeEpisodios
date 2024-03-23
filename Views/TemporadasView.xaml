@@ -8,10 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
 
-        <ContextMenu x:Key ="hola">
+
+        <!--<ContextMenu x:Key ="hola" >
+            <ContextMenu.InputBindings>
+                <MouseBinding MouseAction="LeftClick"></MouseBinding>
+            </ContextMenu.InputBindings>
             <MenuItem Header="Agregar Temporada" Command="{Binding VerAgregarTemporadaCommand}"></MenuItem>
             <MenuItem Header="Agregar Episodio" Command="{Binding VerAgregarEpisodioCommand}"></MenuItem>
-        </ContextMenu>
+        </ContextMenu>-->
 
         <ContextMenu x:Key="hola2">
             <MenuItem Header="Ver temporada" Command="{Binding Source={x:Reference uc1}, Path= DataContext.VerEpisodiosCommand}"></MenuItem>
@@ -30,14 +34,17 @@
 
 
         <Border DockPanel.Dock="Top" BorderThickness="2" BorderBrush="Black">
-
-            <Button DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3" ContextMenu="{StaticResource hola}">Agregar +</Button>
-
+            <WrapPanel HorizontalAlignment="Left">
+                     
+                <Button Command="{Binding VerAgregarTemporadaCommand}" DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3" FontSize="22">Agregar temporada</Button>
+                <Button Command="{Binding VerAgregarEpisodioCommand}" DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="10,3">Agregar Episodio</Button>
+            </WrapPanel>
         </Border>
+
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center">
             <ScrollViewer.Background>
                 <ImageBrush Stretch="Fill" AlignmentX="Left" AlignmentY="Top" ImageSource="https://www.eluniverso.com/resizer/b1BVmUwVF0vGYBiFluTUKjs14ME=/1117x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IYCYVPHX7NHCXN6XNZCDPJT4LA.jpg" >
-                    
+
                 </ImageBrush>
             </ScrollViewer.Background>
 

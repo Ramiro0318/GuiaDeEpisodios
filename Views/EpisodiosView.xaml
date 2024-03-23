@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:GuiaDeEpisodios.Views" xmlns:viewmodels="clr-namespace:GuiaDeEpisodios.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GuiaEpViewModel}"
              mc:Ignorable="d" Name="uc2"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="https://www.eluniverso.com/resizer/b1BVmUwVF0vGYBiFluTUKjs14ME=/1117x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IYCYVPHX7NHCXN6XNZCDPJT4LA.jpg"></ImageBrush>
+    </UserControl.Background>
     <UserControl.Resources>
         <ContextMenu x:Key="hola3">
             <MenuItem Header="Eliminar" Command="{Binding Source={x:Reference uc2}, Path= DataContext.VerEliminarCommand}"></MenuItem>
@@ -23,34 +26,45 @@
 
             <Border DockPanel.Dock="Top" BorderThickness="2" BorderBrush="Black">
                 <DockPanel>
-                    <TextBlock Text="{Binding temporada.Nombre}" FontSize="30" DockPanel.Dock="Left" Width="400" Margin="5" FontWeight="Bold"></TextBlock>
+                    <TextBlock x:Name="TheWitcher" Text="{Binding temporada.Nombre}" FontSize="45" FontWeight="Bold" Margin="0" FontFamily="Thewitcher.ttf #TheWitcher"></TextBlock>
+                    <!--<TextBlock Text="{Binding temporada.Nombre}" FontSize="30" DockPanel.Dock="Left" Width="400" Margin="5" FontWeight="Bold"></TextBlock>-->
                     <Button Command="{Binding CancelarCommand}" HorizontalAlignment="Right" Width="120">Regresar</Button>
                 </DockPanel>
             </Border>
 
         </DockPanel>
         <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <StackPanel>
+                <DockPanel Margin="10">
+                    <Image Source="{Binding temporada.Imagen}" Margin="12" Height="210" Width="180" HorizontalAlignment="Left"></Image>
+                    <WrapPanel Margin="12,2,5,0" HorizontalAlignment="Stretch">
+                        <WrapPanel Background="#A5000000" Margin="0,16,0,0">
+                            <TextBlock x:Name="sinopsis" Text="{Binding temporada.Siposis}" TextWrapping="Wrap" FontSize="20" MinWidth="200" MaxWidth="900" Foreground="Gray" Margin = "12"></TextBlock>
+                        </WrapPanel>
+                    </WrapPanel>
+                </DockPanel>
 
-            <ListBox ItemsSource="{Binding Episodios}" SelectedItem="{Binding episodio}">
-                <ListBox.Background>
-                    <SolidColorBrush Color="#FF136872"></SolidColorBrush>
-                    <!--<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <ListBox ItemsSource="{Binding Episodios}" SelectedItem="{Binding episodio}">
+                    <ListBox.Background>
+                        <SolidColorBrush Color="#FF136872"></SolidColorBrush>
+                        <!--<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF136872"/>
                         <GradientStop Color="#FF0C464E" Offset="1"/>
                     </LinearGradientBrush>-->
-                </ListBox.Background>
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="3"></UniformGrid>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <local:EpisodioView ContextMenu="{StaticResource hola3}"></local:EpisodioView>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    </ListBox.Background>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:EpisodioView ContextMenu="{StaticResource hola3}"></local:EpisodioView>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
+            </StackPanel>
         </ScrollViewer>
     </DockPanel>
 </UserControl>
